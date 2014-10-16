@@ -47,7 +47,15 @@ public class MyListTest {
 	}
 	
 	//faltan test de add(E)
+	public void testAdd(){
+		myList1.add("3");
+		assertEquals("3",myList1.get(3));
+	}
 	
+	public void testAddNull(){
+		myList1.add(null);
+		assert
+	}
 	//faltan test de add(x,E)
 	
 	//faltan test de contains
