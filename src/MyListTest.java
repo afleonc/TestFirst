@@ -132,9 +132,10 @@ public class MyListTest{
 		assertFalse(myList1.contains(new Object().toString()));
 	}
 
-	// faltan test de get
 
-	// Prueba que la función get este devolviendo el valor correcto para un
+	//Test de get
+
+	// Prueba que la funciÃ³n get este devolviendo el valor correcto para un
 	// elemento ya conocido de la lista.
 
 	@Test
@@ -142,7 +143,7 @@ public class MyListTest{
 		assertEquals(myList1.get(0), "a");
 	}
 
-	// Prueba que el método get retorne una excepcion en caso que la lista este
+	// Prueba que el mÃ©todo get retorne una excepcion en caso que la lista este
 	// vacia
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -150,10 +151,10 @@ public class MyListTest{
 		myList2.get(0);
 	}
 
-	// Prueba que el método get no retorna el último elemento de la lista cuando
+	// Prueba que el mÃ©todo get no retorna el Ãºltimo elemento de la lista cuando
 	// se solicita
 
-	// un valor más alto que el tamaño de la misma sino en su lugar devuelve una
+	// un valor mÃ¡s alto que el tamaÃ±o de la misma sino en su lugar devuelve una
 	// excepcion.
 
 	@Test(expected = IndexOutOfBoundsException.class)
@@ -166,7 +167,7 @@ public class MyListTest{
 	// Test de intercalate (MyList<E>)
 
 	// Asumimos que para que dos listas sean intercalables deben tener el mismo
-	// tamaño
+	// tamaÃ±o
 
 	@Test
 	public void testIntercalate() {
@@ -177,7 +178,7 @@ public class MyListTest{
 		assertTrue(myList1.intercalate(myList2));
 	}
 
-	// Esperamos un false ya que las dos listas tienen tamaños diferentes
+	// Esperamos un false ya que las dos listas tienen tamaÃ±os diferentes
 
 	@Test
 	public void testIntercalableFalse() {
@@ -195,7 +196,54 @@ public class MyListTest{
 		myList1.intercalate(myList2);
 	}
 
+<<<<<<< Updated upstream
 	// faltan test de join
+=======
+	//Como no hay elementos iguales el tamaÃ±o de la lista no debe cambiar
+	@Test
+	public void testJoinNothingToJoin(){
+		myList1.join();
+		assertEquals(3, myList1.size());
+		
+	}
+	
+	//Como no hay elementos en la lista el tamaÃ±o deberia mantenerse en 0
+	@Test
+	public void testJoinEmptyList(){
+		myList1.join();
+		assertEquals(0, myList2.size());
+	}
+	
+	//Realiza el join de un solo elemento
+	@Test
+	public void testJoinOneElement(){
+		myList1.add("a");
+		myList1.join();
+		
+		assertEquals(3, myList1.size());
+	}
+	
+	//Realiza la union de dos elementos diferentes a la vez
+	@Test
+	public void testJoinTwoElements(){
+		myList1.add("a");
+		myList1.add("b");
+		myList1.join();
+		
+		assertEquals(3, myList1.size());
+	}
+	
+	//Prueba la union de dos elementos en un mismo objeto a la vez
+	@Test
+	public void testJoinTwoSimilarElements(){
+		myList1.add("a");
+		myList1.add("a");
+		myList1.join();
+		
+		assertEquals(3, myList1.size());
+	}
+	// faltan test de remove(E)
+>>>>>>> Stashed changes
 
 	// faltan test de sublist(MyList<E>)
 
