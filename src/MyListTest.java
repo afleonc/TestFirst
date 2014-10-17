@@ -195,10 +195,8 @@ public class MyListTest{
 		myList2 = null;
 		myList1.intercalate(myList2);
 	}
-
-<<<<<<< Updated upstream
+	
 	// faltan test de join
-=======
 	//Como no hay elementos iguales el tamaño de la lista no debe cambiar
 	@Test
 	public void testJoinNothingToJoin(){
@@ -242,8 +240,6 @@ public class MyListTest{
 		
 		assertEquals(3, myList1.size());
 	}
-	// faltan test de remove(E)
->>>>>>> Stashed changes
 
 	// faltan test de sublist(MyList<E>)
 
