@@ -30,26 +30,38 @@ public class MyListTest {
 		
 	}
 	
+	//Test Constructor
 	@Test
 	public void testConstructor(){
 		myList1 = new MyList<String>();
 		assertEquals(0, myList1.size());
 	}
 	
+	//Test Tamano
 	@Test
 	public void testSize() {
 		assertEquals(3, myList1.size());
 	}
 
+	//Test Tamano 0 cuando no hay objetos
 	@Test
 	public void testSizeEmpty() {
 		assertEquals(0, myList2.size());
 	}
 	
-	//faltan test de add(E)
-	public void testAdd(){
-		myList1.add("3");
-		assertEquals("3",myList1.get(3));
+	//Test Add objeto agregado a ultima posicion
+	@Test
+	public void testAdd() {
+		myList1.add("d");
+		assertEquals("d", myList1.get(myList1.size()-1));
+	}
+	
+	//Test Add tamano de lista actualizado
+	@Test
+	public void testAddSize() {
+		int tamanoAntes = myList1.size();
+		myList1.add("d");
+		assertEquals(tamanoAntes+1,myList1.size());
 	}
 	
 	public void testAddNull(){
