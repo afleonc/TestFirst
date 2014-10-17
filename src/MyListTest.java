@@ -195,8 +195,7 @@ public class MyListTest{
 		myList2 = null;
 		myList1.intercalate(myList2);
 	}
-	
-	// faltan test de join
+
 	//Como no hay elementos iguales el tamaño de la lista no debe cambiar
 	@Test
 	public void testJoinNothingToJoin(){
@@ -241,6 +240,47 @@ public class MyListTest{
 		assertEquals(3, myList1.size());
 	}
 
-	// faltan test de sublist(MyList<E>)
+	//Test de Sublist
+	//Prueba que para que una lista este sea una sublista de otra TODOS los elementos deben pertenercer a ella
+	@Test 
+	public void testSublist(){
+		myList2.add("a");
 
+		assertTrue(myList1.sublist(myList2));
+	}
+	
+	//La lista vacia es un subconjunto de una lista por lo cual debe arrojar true
+	@Test 
+	public void testSublistEmpty(){
+		assertTrue(myList1.sublist(myList2));
+	}
+	
+	//Una lista no puede ser subconjunto de una lista vacia
+	@Test 
+	public void testSublistInverseEmpty(){
+		assertFalse(myList2.sublist(myList1));
+	}
+	
+	//El valor nulo no es parte de una list
+	@Test 
+	public void testSublistNull(){
+		assertFalse(myList1.sublist(null));
+	}
+	
+	//Prueba que para que una lista este sea una sublista de otra TODOS los elementos deben pertenercer a ella
+	@Test 
+	public void testSublistIncomplete(){
+		myList2.add("a");
+		myList2.add("b");
+		myList2.add("k");
+		assertFalse(myList1.sublist(myList2));
+	}
+	
+	//Prueba que una lista es sublista de si misma
+	@Test 
+	public void testSublistSelf(){
+
+		assertTrue(myList1.sublist(myList1));
+	}
+	
 }
