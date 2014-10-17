@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class MyListTest{
+public class MyListTest {
 
 	MyList<String> myList1;
 	MyList<String> myList2;
@@ -90,14 +90,14 @@ public class MyListTest{
 		myList1.remove("b");
 		assertEquals(tamanoAntes - 1, myList1.size());
 	}
-	
-	//Test Remove se espera un null pointer exception cuando se 
-	//hace remove para un objeto que no existe
-	
+
+	// Test Remove se espera un null pointer exception cuando se
+	// hace remove para un objeto que no existe
+
 	@Test(expected = NullPointerException.class)
 	public void testRemoveNo() {
 		myList1.remove("d");
-	}	
+	}
 
 	// Test de contains
 	// Revisa si puede encontrar en la lista un valor conocido
@@ -132,8 +132,7 @@ public class MyListTest{
 		assertFalse(myList1.contains(new Object().toString()));
 	}
 
-
-	//Test de get
+	// Test de get
 
 	// Prueba que la función get este devolviendo el valor correcto para un
 	// elemento ya conocido de la lista.
@@ -162,7 +161,20 @@ public class MyListTest{
 		myList1.get(6);
 	}
 
-	// faltan test de intercalate (E)
+	// Test de intercalate (E)
+
+	// El tamaño se debe duplicar
+	public void testIntercalateObjSize() {
+		myList1.intercalate("d");
+		assertEquals(6, myList1.size());
+	}
+
+	// Verificar posiciones del objeto intercalado
+	public void testIntercalateObjPos() {
+		myList1.intercalate("d");
+		assertTrue(myList1.get(1) == "d" && myList1.get(3) == "d"
+				&& myList1.get(5) == "d");
+	}
 
 	// Test de intercalate (MyList<E>)
 
@@ -196,91 +208,94 @@ public class MyListTest{
 		myList1.intercalate(myList2);
 	}
 
-	//Como no hay elementos iguales el tamaño de la lista no debe cambiar
+	// Como no hay elementos iguales el tamaño de la lista no debe cambiar
 	@Test
-	public void testJoinNothingToJoin(){
+	public void testJoinNothingToJoin() {
 		myList1.join();
 		assertEquals(3, myList1.size());
-		
+
 	}
-	
-	//Como no hay elementos en la lista el tamaño deberia mantenerse en 0
+
+	// Como no hay elementos en la lista el tamaño deberia mantenerse en 0
 	@Test
-	public void testJoinEmptyList(){
+	public void testJoinEmptyList() {
 		myList1.join();
 		assertEquals(0, myList2.size());
 	}
-	
-	//Realiza el join de un solo elemento
+
+	// Realiza el join de un solo elemento
 	@Test
-	public void testJoinOneElement(){
+	public void testJoinOneElement() {
 		myList1.add("a");
 		myList1.join();
-		
-		assertEquals(3, myList1.size());
-	}
-	
-	//Realiza la union de dos elementos diferentes a la vez
-	@Test
-	public void testJoinTwoElements(){
-		myList1.add("a");
-		myList1.add("b");
-		myList1.join();
-		
-		assertEquals(3, myList1.size());
-	}
-	
-	//Prueba la union de dos elementos en un mismo objeto a la vez
-	@Test
-	public void testJoinTwoSimilarElements(){
-		myList1.add("a");
-		myList1.add("a");
-		myList1.join();
-		
+
 		assertEquals(3, myList1.size());
 	}
 
-	//Test de Sublist
-	//Prueba que para que una lista este sea una sublista de otra TODOS los elementos deben pertenercer a ella
-	@Test 
-	public void testSublist(){
+	// Realiza la union de dos elementos diferentes a la vez
+	@Test
+	public void testJoinTwoElements() {
+		myList1.add("a");
+		myList1.add("b");
+		myList1.join();
+
+		assertEquals(3, myList1.size());
+	}
+
+	// Prueba la union de dos elementos en un mismo objeto a la vez
+	@Test
+	public void testJoinTwoSimilarElements() {
+		myList1.add("a");
+		myList1.add("a");
+		myList1.join();
+
+		assertEquals(3, myList1.size());
+	}
+
+	// Test de Sublist
+	// Prueba que para que una lista este sea una sublista de otra TODOS los
+	// elementos deben pertenercer a ella
+	@Test
+	public void testSublist() {
 		myList2.add("a");
 
 		assertTrue(myList1.sublist(myList2));
 	}
-	
-	//La lista vacia es un subconjunto de una lista por lo cual debe arrojar true
-	@Test 
-	public void testSublistEmpty(){
+
+	// La lista vacia es un subconjunto de una lista por lo cual debe arrojar
+	// true
+	@Test
+	public void testSublistEmpty() {
 		assertTrue(myList1.sublist(myList2));
 	}
-	
-	//Una lista no puede ser subconjunto de una lista vacia
-	@Test 
-	public void testSublistInverseEmpty(){
+
+	// Una lista no puede ser subconjunto de una lista vacia
+	@Test
+	public void testSublistInverseEmpty() {
 		assertFalse(myList2.sublist(myList1));
 	}
-	
-	//El valor nulo no es parte de una list
-	@Test 
-	public void testSublistNull(){
+
+	// El valor nulo no es parte de una list
+	@Test
+	public void testSublistNull() {
 		assertFalse(myList1.sublist(null));
 	}
-	
-	//Prueba que para que una lista este sea una sublista de otra TODOS los elementos deben pertenercer a ella
-	@Test 
-	public void testSublistIncomplete(){
+
+	// Prueba que para que una lista este sea una sublista de otra TODOS los
+	// elementos deben pertenercer a ella
+	@Test
+	public void testSublistIncomplete() {
 		myList2.add("a");
 		myList2.add("b");
 		myList2.add("k");
 		assertFalse(myList1.sublist(myList2));
 	}
-	
-	//Prueba que una lista es sublista de si misma
-	@Test 
-	public void testSublistSelf(){
+
+	// Prueba que una lista es sublista de si misma
+	@Test
+	public void testSublistSelf() {
 
 		assertTrue(myList1.sublist(myList1));
 	}
-	
+
 }
